@@ -1,0 +1,76 @@
+/*  Chris de Leon
+*   10/7/2022
+*   CIS131 Midterm Project */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+}
+
+.square {
+    border: 1px solid yellow;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh auto;
+}
+
+.topRow {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.topRow div {
+    width: fit-content;
+    padding: 3vw;
+    border: 2px solid black;
+    
+}
+
+.columnContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftColumn{
+    display: inline-flex;
+    flex-direction: column;
+    width: fit-content;
+    
+}
+
+.leftColumn div {
+    width: fit-content;
+    padding: 3vw;
+    border: 2px solid black;
+
+}
+
+.rightColumn{
+    display: inline-flex;
+    flex-direction: column;
+    width: fit-content;
+
+}
+
+.rightColumn div {
+    width: fit-content;
+    padding: 3vw;
+    border: 2px solid black;
+
+}
+
+.bottomRow{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.bottomRow div {
+    width: fit-content;
+    padding: 3vw;
+    border: 2px solid black;
+
+}
