@@ -8,69 +8,156 @@
     font-family: 'Open Sans';
 }
 
-.square {
-    border: 1px solid yellow;
-    width: fit-content;
-    justify-content: center;
-    align-items: center;
-    margin: 10vh auto;
+
+body {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.topRow {
+.title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.subtitle {
+    text-align: center;
+}
+
+.square {
+    width: fit-content;
+    margin: 5vh auto;
+}
+
+#topRow {
     display: flex;
     flex-direction: row;
-    width: fit-content;
+    width: 100%;
 }
 
-.topRow div {
-    width: fit-content;
-    padding: 3vw;
+#topRow div {
+    width: 100%;
+    padding: 2.5vw;
     border: 2px solid black;
     
 }
 
-.columnContainer {
+#columnContainer {
     display: flex;
     justify-content: space-between;
 }
 
-.leftColumn{
+#leftColumn{
     display: inline-flex;
     flex-direction: column;
     width: fit-content;
     
 }
 
-.leftColumn div {
-    width: fit-content;
-    padding: 3vw;
+#leftColumn div {
+    padding: 2.5vw;
     border: 2px solid black;
 
 }
 
-.rightColumn{
+#rightColumn{
     display: inline-flex;
     flex-direction: column;
     width: fit-content;
 
 }
 
-.rightColumn div {
-    width: fit-content;
-    padding: 3vw;
+#rightColumn div {
+    padding: 2.5vw;
     border: 2px solid black;
 
 }
 
-.bottomRow{
+#bottomRow{
     display: flex;
     flex-direction: row;
     width: fit-content;
 }
 
-.bottomRow div {
+#bottomRow div {
     width: fit-content;
-    padding: 3vw;
+    padding: 2.5vw;
     border: 2px solid black;
 
+}
+
+.dice {
+    max-width: 40px;
+}
+
+#playerOne {
+    position: absolute;
+    left: 8%;
+    top: 25%;
+}
+
+#playerTwo {
+    position: absolute;
+    right: 10%;
+    top: 25%;
+}
+
+#diceContainer {
+    text-align: center;
+    display: none;
+}
+
+#capstone {
+    border: 2px solid green;
+    position: absolute;
+    top: 40%;
+    right: 47%;
+    text-align: center;
+    padding: 2rem;
+    z-index: 1;
+
+}
+
+.character {
+    max-width: 6vw;
+}
+
+#popup {
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 35%;
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    right: 33%;
+    background-color: white;
+    z-index: 3;
+    padding: 10px;
+}
+
+#popup h1 {
+    margin-bottom: 10px;
+}
+
+#popup p {
+    margin-bottom: 10px;
+}
+
+#popup button {
+    margin-bottom: 10px;
+}
+
+#popup button:hover {
+    cursor: pointer;
+}
+
+#button:hover {
+    cursor: pointer;
+}
+
+.button {
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    color: #24292E;
+    cursor: pointer;
+    padding: 6px 16px;
 }
