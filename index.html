@@ -11,53 +11,42 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
     <title>Document</title>
 </head>
-<body>
-    <div class="square">
-        <div class="topRow" id="topRow">
-            <div>square</div>
-            <div>square</div>
-            <div>square</div>
-            <div>square</div>
-            <div>square</div>
+<body id="body">
+    <h1 class="title">The Game of Life</h1>
+    <h3 class="subtitle">OTC Edition</h3>
 
-        </div>
-
-        <div class="columnContainer">
-            <div class="leftColumn">
-                <div>square</div>
-                <div>square</div>
-                <div>square</div>
-
-            </div>
-
-            <div class="rightColumn">
-                <div>square</div>
-                <div>square</div>
-                <div>square</div>
-                
-            </div>
-        </div>
-
-        <div class="bottomRow">
-            <div>square</div>
-            <div>square</div>
-            <div>square</div>
-            <div>square</div>
-            <div>square</div>
-            
-        </div>
+    <div class="square" id="square">
+        
     </div>
     
     
+    <div id="diceContainer">
+        <img src="1.png" alt="die 1" id="firstDie" class="dice">
+        <img src="1.png" alt="die 2" id="secondDie" class="dice"><br>
+        <button class="button" id="button">Roll dice!</button><br>
+        <button class="button" id="rules">Rules</button>
+    </div>
 
-    <footer>
-        <div>
-            Player 1's turn
+
+    <div class="turns">
+        <div id="playerOne">
+            Player 1's turn<br>
+            <img src="#" class="character" alt="" id="spongebob">
         </div>
-        <div>
-            Player 2's turn
+        <div id="playerTwo">
+            Player 2's turn<br>
+            <img src="#" class="character" alt="" id="patrick">
         </div>
-    </footer>
+    </div>
+
+    <div id="popup">
+        <h1>Rules:</h1>
+        <p>Thanks for playing The Game of Life: OTC Edition. <br>Two players will compete against each other with the goal of passing CIS260 and ultimately graduating. <br>To play, the player will role the dice by clicking on the "Roll Dice!" button at the bottom of the page. The game will begin with player 1. Your character will move the sum of the two die. At random, you will be assigned a grade on the course that you land on. The passed classes will appear under the player. If the grade is a C or above, you'll add it to the classes you've passed. Once you have at least 3 classes with a C or higher, you'll roll the die once again. A sum of 8 or higher will earn you a passing score for CIS260 and you'll graduate.</p>
+        <button class="button" id="play">Let's Play!</button>
+    </div>
+    
+
+    <div id="capstone">CIS260</div>
     <script src="script.js"></script>
 </body>
 </html>
