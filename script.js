@@ -11,28 +11,33 @@ var diceArray = [ // array with dice images
 	"6.png"
 ];
 
-var scoreArray = [ // array with random letter grades
-	"A",
-	"B",
-	"C",
-	"D",
-	"F",
+var lifeCardArray = [
+	"Superiority complex got the best of you and cost you a class. Lose 1 course.",
+	"You forgot how to center a div on your final exam. Lose 1 course.",
+	"You found Stack Overflow and your grades suddenly improved. Gain 1 course.",
+	"You were proactive with your coursework. Gain 1 course.",
+	"Your cat spilled water on your PC and it caught on fire. Luckily, you backed-up your files. Nothing happens.",
+	"Your cat spilled water on your PC and it caught on fire. You didn't have your files backed-up though. Lose 1 course.",
+	"You fixed 100 bugs in your program, but another 32 popped up. You lose a bit of dignity, but nothing else.",
+	"You set up your for-loop incorrectly and your computer blows up. Lose 1 course.",
+	"Professor Markley wins the lottery and goes to Hawaii indefinitely. Gain 1 course. ",
+	"Recursion example..." // loops a player back to the start
 ];
 
 var classArray = [ // array with class names, excules CIS260
-	"CIS-101",
+	"Freebie",
 	"CIS-120",
 	"CIS-130",
 	"CIS-131",
-	"CIS-150",
+	"Chance!",
 	"CIS-151",
 	"CIS-210",
-	"CIS-250",
+	"Chance!",
 	"CIS-244",
 	"MTH-140",
 	"MTH-141",
 	"MTH-214",
-	"PLS-101",
+	"Chance!",
 	"PHY-120",
 	"BIO-160"
 ];
@@ -123,11 +128,9 @@ function diceRoll(e) { // select random dice from array
 	firstRandomNum += 1; // adds 1 since array begins at 0;
 	SecondRandomNum += 1;
 	var totalMoves = firstRandomNum + SecondRandomNum;
-	console.log(firstRandomNum);
-	console.log(SecondRandomNum);
 	console.log(totalMoves);
 
-	switch (turnCounter % 2) {
+	switch (turnCounter % 2) { // switches between players' turn
 		case 0:
 			document.getElementById('playerOne').style.display = "block";
 			document.getElementById('playerTwo').style.display = "none";
@@ -136,8 +139,10 @@ function diceRoll(e) { // select random dice from array
 			document.getElementById('playerOne').style.display = "none";
 			document.getElementById('playerTwo').style.display = "block";
 			break;
-
 	}
+
+
+	
 }
 
 
@@ -166,4 +171,30 @@ function popupShow(e) { // displays the rules again
 	spongebob.src = "";
 	patrick.src = "";
 	diceContainer.style.display = "none";
+}
+
+
+var gradeButton = document.getElementById('gradeButton');
+gradeButton.addEventListener('click', grader);
+var grade;
+
+function grader(e){
+	grade = Math.floor(Math.random() * 11); // random number set to 11 for the 10 cards in the array
+
+	switch(grade){
+		case 1:
+			alert(grade);
+
+			break;
+		case 2:
+			alert(grade);
+			break;
+		case 3:
+			alert(grade);
+			break;
+		case 4: alert(grade);
+			break;
+		case 5: alert(grade);
+		break;
+	}
 }
