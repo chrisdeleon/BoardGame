@@ -11,6 +11,8 @@
 
 body {
     background-color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+
 }
 
 .title {
@@ -106,14 +108,18 @@ body {
 }
 
 #capstone {
-    border: 2px solid green;
-    position: absolute;
-    top: 40%;
-    right: 47%;
-    text-align: center;
-    padding: 2rem;
-    z-index: 1;
+    display: flex;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 25vw;
+}
 
+#capstone h1 {
+    border: 1px solid black;
+    padding: 15px;
 }
 
 .character {
@@ -161,3 +167,11 @@ body {
     cursor: pointer;
     padding: 6px 16px;
 }
+
+.small {
+    max-width: 30px;
+    position: relative;
+    border: 1px solid green;
+}
+
+

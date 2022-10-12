@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
-    <title>Document</title>
+    <title>Board Game</title>
 </head>
 <body id="body">
     <h1 class="title">The Game of Life</h1>
@@ -20,10 +20,13 @@
     </div>
     
     
+    
     <div id="diceContainer">
         <img src="1.png" alt="die 1" id="firstDie" class="dice">
         <img src="1.png" alt="die 2" id="secondDie" class="dice"><br>
-        <button class="button" id="button">Roll dice!</button><br>
+        <button class="button" id="button">Roll dice!</button>
+        <button id="gradeButton" class="grade button">Grade</button>
+        <br>
         <button class="button" id="rules">Rules</button>
     </div>
 
@@ -39,14 +42,23 @@
         </div>
     </div>
 
+    <div id="capstone"><h1>CIS-260</h1><h1>CIS-260</h1></div>
+
+
     <div id="popup">
         <h1>Rules:</h1>
-        <p>Thanks for playing The Game of Life: OTC Edition. <br>Two players will compete against each other with the goal of passing CIS260 and ultimately graduating. <br>To play, the player will role the dice by clicking on the "Roll Dice!" button at the bottom of the page. The game will begin with player 1. Your character will move the sum of the two die. At random, you will be assigned a grade on the course that you land on. The passed classes will appear under the player. If the grade is a C or above, you'll add it to the classes you've passed. Once you have at least 3 classes with a C or higher, you'll roll the die once again. A sum of 8 or higher will earn you a passing score for CIS260 and you'll graduate.</p>
+        <p>Thanks for playing The Game of Life: OTC Edition. <br>Two players will compete against each other with the goal of passing CIS260 and ultimately graduating. <br>To play, the player will role the dice by clicking on the "Roll Dice!" button at the bottom of the page. The game will begin with player 1. Your character will move the sum of the two die. At random, you will be assigned a grade on the course that you land on. The passed classes will appear under the player. If the grade is a C or above, it'll be added to the classes you've passed. Once you have at least 3 classes with a C or higher, you'll roll the dice once again. A sum of 8 or higher will earn you a passing score for CIS260 and you'll graduate.</p>
         <button class="button" id="play">Let's Play!</button>
     </div>
+
+    <div class="characterContainer">
+        <div id="spongebobCharacter"><img src="spongebob.png" alt="" class="small"></div>
+
+        <div id="patrickCharacter"><img src="patrick.png" alt="" class="small"></div>
+    </div>
+    
     
 
-    <div id="capstone">CIS260</div>
     <script src="script.js"></script>
 </body>
 </html>
