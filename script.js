@@ -11,6 +11,7 @@ var diceArray = [ // array with dice images
 	"6.png"
 ];
 
+
 var lifeCardArray = [
 	"Superiority complex got the best of you and cost you a class. Lose 1 course.",
 	"You forgot how to center a div on your final exam. Lose 1 course.",
@@ -25,7 +26,7 @@ var lifeCardArray = [
 ];
 
 var classArray = [ // array with class names, excules CIS260
-	"Freebie",
+	"Start",
 	"CIS-120",
 	"CIS-130",
 	"CIS-131",
@@ -39,112 +40,128 @@ var classArray = [ // array with class names, excules CIS260
 	"MTH-214",
 	"Chance!",
 	"PHY-120",
-	"BIO-160"
+	"BIO-160",
+	"Freebie!"
 ];
 
 
 
-var container;
+
 var i = 0; // counter for loops
-var topRow;
-var columnContainer;
-var leftColumn;
-var rightColumn;
-var bottomRow;
-var divCreate;
-
-window.addEventListener('load', initializer);
-
-function initializer() { // initializes page
-	container = document.getElementById('square');
-	boardCreate();
-}
-
-function boardCreate() { // creates the board game layout
-	for (i = 0; i < 3; i++) { // loads the three inner containers
-		divCreate = document.createElement('div');
-		container.appendChild(divCreate);
-	}
-
-	// adds ids to html elements created dynamically
-	document.getElementsByTagName('div')[1].id = 'topRow';
-	document.getElementsByTagName('div')[2].id = 'columnContainer';
-	document.getElementsByTagName('div')[3].id = 'bottomRow';
-
-	for (i = 0; i < 5; i++) { // loads 5 top boxes
-		topRow = document.getElementById('topRow');
-		divCreate = document.createElement('div');
-		divCreate.innerHTML = classArray[i];
-		topRow.appendChild(divCreate);
-	}
-
-	for (i = 0; i < 2; i++) { // loads the two column containers
-		columnContainer = document.getElementById('columnContainer');
-		divCreate = document.createElement('div');
-		columnContainer.appendChild(divCreate);
-	}
-
-	// adds ids to more elememnts
-	document.getElementsByTagName('div')[8].id = 'leftColumn';
-	document.getElementsByTagName('div')[9].id = 'rightColumn';
-
-	for (i = 0; i < 3; i++) { // creates 3 left column boxes
-		leftColumn = document.getElementById('leftColumn');
-		divCreate = document.createElement('div');
-		divCreate.innerHTML = classArray[i + 12];
-		leftColumn.appendChild(divCreate);
-	}
-
-	for (i = 0; i < 3; i++) { // creates 3 right column boxes
-		rightColumn = document.getElementById('rightColumn');
-		divCreate = document.createElement('div');
-		divCreate.innerHTML = classArray[i + 5];
-		rightColumn.appendChild(divCreate);
-	}
-
-	for (i = 0; i < 5; i++) { // loads 5 bottom boxes
-		bottomRow = document.getElementById('bottomRow');
-		divCreate = document.createElement('div');
-		divCreate.innerHTML = classArray[i + 8];
-		bottomRow.appendChild(divCreate);
-	}
-
+for (i = 0; i < classArray.length; i++) { // loads array into HTML
+	document.getElementById(i).innerHTML = classArray[i];
 }
 
 var rollButton = document.getElementById('button');
 var firstDie = document.getElementById('firstDie');
 var secondDie = document.getElementById('secondDie');
 var turnCounter = 0;
+var gradeVerifier = false; // ensures grade is clicked
+var gradeButton = document.getElementById('gradeButton');
+gradeButton.addEventListener('click', grader);
+var singleGrade = false; // ensures only one grade
+var gradeAlert = document.getElementById('gradeAlert');
+var singleAlert = document.getElementById('singleAlert');
+var p1Total = 0;
+var p2Total = 0;
+var clearTable = 0;
+
 
 rollButton.addEventListener('click', diceRoll);
 
 function diceRoll(e) { // select random dice from array
 	// indicates which player is up and records total spaces moved
+
 	var firstRandomNum = Math.floor(Math.random() * 6);
-	var SecondRandomNum = Math.floor(Math.random() * 6);
-	firstDie.src = diceArray[firstRandomNum];
-	secondDie.src = diceArray[SecondRandomNum];
-	turnCounter++; // switch for each player's turn
-	firstRandomNum += 1; // adds 1 since array begins at 0;
-	SecondRandomNum += 1;
-	var totalMoves = firstRandomNum + SecondRandomNum;
-	console.log(totalMoves);
+	var secondRandomNum = Math.floor(Math.random() * 6);
+	firstDie.src = diceArray[firstRandomNum]; // changes the die's image
+	secondDie.src = diceArray[secondRandomNum];
+	firstRandomNum += 1; // added 1 so that math is correct;
+	secondRandomNum += 1;
+	var sum = firstRandomNum + secondRandomNum;
+	clearTable++;
 
-	switch (turnCounter % 2) { // switches between players' turn
-		case 0:
-			document.getElementById('playerOne').style.display = "block";
-			document.getElementById('playerTwo').style.display = "none";
-			break;
-		case 1:
-			document.getElementById('playerOne').style.display = "none";
-			document.getElementById('playerTwo').style.display = "block";
-			break;
+	if (gradeVerifier == false) { // if statement makes sure that player clicks grade button
+		rollButton.style.backgroundColor = "white"; // resets any color added
+		singleAlert.style.display = "none";
+		grade.innerHTML = '<img src="canvas.png" alt="" class="canvas"><br>Grade: ';
+		turnCounter++; // switch for each player's turn
+		singleGrade = false; // resets grade
+		clearTable++;
+
+		switch (turnCounter % 2) { // switches between players' turn
+			case 0: // second player's turn
+				document.getElementById('playerOne').style.display = "block";
+				document.getElementById('playerTwo').style.display = "none";
+				p2Total += sum;
+				if (p2Total >= 16) {
+					var p2Remainder = p2Total % 16; // grabs remaining moves
+					p2Total = 0; // resets the character to start position
+					p2Total += p2Remainder; // allows for the remaining moves to play out
+				}
+				
+				document.getElementById(p2Total).innerHTML += '<img src="patrick.png" alt="" class="small">'; // changes player 2's location
+				break;
+			case 1: // first player's turn
+				document.getElementById('playerOne').style.display = "none";
+				document.getElementById('playerTwo').style.display = "block";
+				p1Total += sum;
+				if (p1Total >= 16) {
+					var p1Remainder = p1Total % 16; // grabs remaining moves
+					p1Total = 0; // resets the character to start position
+					p1Total += p1Remainder; // allows for the remaining moves to play out
+				}
+				if (clearTable >= 2) { // clears the table but keeps track of player 2's last location
+					for (i = 0; i < classArray.length; i++) { // loads array into HTML
+						document.getElementById(i).innerHTML = classArray[i];
+					}
+					document.getElementById(p2Total).innerHTML += '<img src="patrick.png" alt="" class="small">';
+				}
+				document.getElementById(p1Total).innerHTML += '<img src="spongebob.png" alt="" class="small">'; // changes player 1's location
+				break;
+		}
+		gradeVerifier = true; // ensure button click is registered once.
+	} else {
+		gradeButton.style.backgroundColor = "#fa4c50";
+		gradeAlert.style.display = "block";
 	}
-
-
-	
 }
 
+
+var grade = document.getElementById('grade');
+var gradeRandomizer = 0;
+
+function grader(e) { // function gives grade and allows for the next player to begin
+	if (singleGrade == false) {
+		gradeRandomizer += Math.floor(1 + Math.random() * 5); // 5 options that correspond to grades
+
+		switch (gradeRandomizer) {
+			case 1:
+				grade.innerHTML += "A";
+				break;
+			case 2:
+				grade.innerHTML += "B";
+				break;
+			case 3:
+				grade.innerHTML += "C";
+				break;
+			case 4:
+				grade.innerHTML += "D";
+				break;
+			case 5:
+				grade.innerHTML += "F";
+				break;
+		}
+		gradeVerifier = false;
+		gradeButton.style.backgroundColor = "white";
+		gradeAlert.style.display = "none";
+		singleGrade = true;
+		gradeRandomizer = 0;
+	} else {
+		singleAlert.style.display = "block";
+		rollButton.style.backgroundColor = "#24d940";
+	}
+}
 
 var playButton = document.getElementById('play');
 var popup = document.getElementById('popup');
@@ -152,6 +169,7 @@ var body = document.getElementById('body');
 var spongebob = document.getElementById('spongebob');
 var patrick = document.getElementById('patrick');
 var diceContainer = document.getElementById('diceContainer');
+
 playButton.addEventListener('click', popupExit);
 
 function popupExit(e) { // removes the popup screen
@@ -174,27 +192,41 @@ function popupShow(e) { // displays the rules again
 }
 
 
-var gradeButton = document.getElementById('gradeButton');
-gradeButton.addEventListener('click', grader);
-var grade;
 
-function grader(e){
-	grade = Math.floor(Math.random() * 11); // random number set to 11 for the 10 cards in the array
 
-	switch(grade){
+
+
+
+/* THIS CODE WORKS FOR A RANDOM CHANCE CARD
+
+function chanceSelector(){
+	var chance = Math.floor(Math.random() * 10);
+	console.log(chance);
+	switch(chance){ // chance card switch
+		case 0:
 		case 1:
-			alert(grade);
-
+		case 5: 
+		case 7: // loses a course
+			console.log(lifeCardArray[chance]);
+			console.log(chance);
 			break;
 		case 2:
-			alert(grade);
-			break;
 		case 3:
-			alert(grade);
+		case 8: // gains a course
+			console.log(lifeCardArray[chance]);
+			console.log(chance);
 			break;
-		case 4: alert(grade);
+		case 4:
+		case 6: // nothing happens
+			console.log(lifeCardArray[chance]);
+			console.log(chance);
 			break;
-		case 5: alert(grade);
-		break;
+		case 9: // send to beginning
+			console.log('to the beginnging');
+			console.log(chance);
+			break;
 	}
-}
+}	
+
+
+*/

@@ -10,8 +10,8 @@
 
 
 body {
-    background-color: rgba(0, 0, 0, 0.8);
-    overflow: hidden;
+    background-color: rgba(0, 0, 0, 1);
+    overflow-x: hidden;
 
 }
 
@@ -27,19 +27,25 @@ body {
 .square {
     width: fit-content;
     margin: 5vh auto;
+    margin-left: 20px;
+    position: absolute;
 }
 
 #topRow {
     display: flex;
     flex-direction: row;
     width: 100%;
+
 }
 
 #topRow div {
-    width: 100%;
-    padding: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    width: 10vw;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
     border: 2px solid black;
-    
 }
 
 #columnContainer {
@@ -55,7 +61,12 @@ body {
 }
 
 #leftColumn div {
-    padding: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    width: 10vw;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
     border: 2px solid black;
 
 }
@@ -68,7 +79,12 @@ body {
 }
 
 #rightColumn div {
-    padding: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    width: 10vw;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
     border: 2px solid black;
 
 }
@@ -80,8 +96,12 @@ body {
 }
 
 #bottomRow div {
-    width: fit-content;
-    padding: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    width: 10vw;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
     border: 2px solid black;
 
 }
@@ -105,6 +125,13 @@ body {
 #diceContainer {
     text-align: center;
     display: none;
+    position: relative;
+    margin-top: 65vh;
+}
+
+#playerContainer {
+    position: relative;
+    margin-top: 2vh;
 }
 
 #capstone {
@@ -169,9 +196,45 @@ body {
 }
 
 .small {
-    max-width: 30px;
-    position: relative;
-    border: 1px solid green;
+    max-width: 20px;
 }
 
+.canvas {
+    max-width: 60px;
+}
+
+#gradeAlert {
+    display: none;
+}
+
+#singleAlert {
+    display: none;
+}
+
+#card {
+    border: 1px solid black;
+    border-radius: 30px;
+    position: absolute;
+    top: 20%;
+    left: 60%;
+    width: 30vw;
+    height: 30vh;
+    text-align: center;
+    box-shadow:
+  1.4px 1.7px 3.6px rgba(0, 0, 0, 0.038),
+  3.8px 4.8px 10px rgba(0, 0, 0, 0.055),
+  9px 11.5px 24.1px rgba(0, 0, 0, 0.072),
+  30px 38px 80px rgba(0, 0, 0, 0.11)
+;
+}
+
+#grade {
+    margin-top: 20px;
+
+}
+
+#chance {
+    margin-top: 40px;
+    overflow-wrap: break-word;
+}
 
