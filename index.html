@@ -16,7 +16,46 @@
     <h3 class="subtitle">OTC Edition</h3>
 
     <div class="square" id="square">
-        
+        <div id="topRow">
+            <div id="0"></div>
+            <div id="1"></div>
+            <div id="2"></div>
+            <div id="3"></div>
+            <div id="4"></div>
+
+        </div>
+
+        <div id="columnContainer">
+            <div id="leftColumn">
+                <div id="15"></div>
+                <div id="14"></div>
+                <div id="13"></div>
+
+            </div>
+
+            <div id="rightColumn">
+                <div id="5"></div>
+                <div id="6"></div>
+                <div id="7"></div>
+                
+            </div>
+        </div>
+
+        <div id="bottomRow">
+            <div id="12"></div>
+            <div id="11"></div>
+            <div id="10"></div>
+            <div id="9"></div>
+            <div id="8"></div>
+            
+        </div>
+    </div>
+    <div class="characterContainer">
+        <div id="spongebobCharacter">
+            
+        </div>
+
+        <div id="patrickCharacter"></div>
     </div>
     
     
@@ -25,20 +64,20 @@
         <img src="1.png" alt="die 1" id="firstDie" class="dice">
         <img src="1.png" alt="die 2" id="secondDie" class="dice"><br>
         <button class="button" id="button">Roll dice!</button>
-        <button id="gradeButton" class="grade button">Grade</button>
+        <button id="gradeButton" class="grade button">Grade/Card</button><span id="gradeAlert">*you forgot to get your grade/card*</span><span id="singleAlert">*invalid input, it's time to roll the dice*</span>
         <br>
         <button class="button" id="rules">Rules</button>
     </div>
 
 
-    <div class="turns">
+    <div class="turns" id="playerContainer">
         <div id="playerOne">
             Player 1's turn<br>
-            <img src="#" class="character" alt="" id="spongebob">
+            <img src="#" class="character" alt="" id="spongebob"><br><span id="playerOneClasses"></span>
         </div>
         <div id="playerTwo">
             Player 2's turn<br>
-            <img src="#" class="character" alt="" id="patrick">
+            <img src="#" class="character" alt="" id="patrick"><br><span id="playerTwoClasses"></span>
         </div>
     </div>
 
@@ -51,11 +90,12 @@
         <button class="button" id="play">Let's Play!</button>
     </div>
 
-    <div class="characterContainer">
-        <div id="spongebobCharacter"><img src="spongebob.png" alt="" class="small"></div>
-
-        <div id="patrickCharacter"><img src="patrick.png" alt="" class="small"></div>
+    <div id="card">
+        <h4 id="grade">Grade: </h4>
+        <h4 id="chance">Chance: </h4>
     </div>
+
+    
     
     
 
