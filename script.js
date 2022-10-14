@@ -185,17 +185,13 @@ var playertwoClasses = document.getElementById('playerTwoClasses');
 function addCourse() {
 	switch (turnCounter % 2) {
 		case 0: // player 2
-			if (classArray[p2Total] == classArray[4] || classArray[p2Total] == classArray[7] || classArray[p2Total] == classArray[12] || classArray[p2Total] == classArray[15] || classArray[p2Total] == classArray[0]) {
-				// do nothing
-			} else {
+			if (classArray[p2Total] == classArray[4] || classArray[p2Total] == classArray[7] || classArray[p2Total] == classArray[12] || classArray[p2Total] == classArray[15] || classArray[p2Total] == classArray[0]) {} else {
 				playertwoClasses.innerHTML += classArray[p2Total] + " ";
 			}
 			courseCheck();
 			break;
 		case 1: // player 1
-			if (classArray[p1Total] == classArray[4] || classArray[p1Total] == classArray[7] || classArray[p1Total] == classArray[12] || classArray[p1Total] == classArray[15] || classArray[p1Total] == classArray[0]) {
-				// do nothing
-			} else {
+			if (classArray[p1Total] == classArray[4] || classArray[p1Total] == classArray[7] || classArray[p1Total] == classArray[12] || classArray[p1Total] == classArray[15] || classArray[p1Total] == classArray[0]) {} else {
 				playeroneClasses.innerHTML += classArray[p1Total] + " ";
 			}
 			courseCheck();
@@ -241,6 +237,7 @@ var p1Capstone = document.getElementById('p1Capstone');
 var p2Capstone = document.getElementById('p2Capstone');
 var title = document.getElementById('title');
 var subtitle = document.getElementById('subtitle');
+var card = document.getElementById('card');
 
 function courseCheck() { // checks to see if a player has won
 	if (playeroneClasses.innerHTML.length == 32) { // 32 is the exact length of a player with 3 passing classes
@@ -248,6 +245,7 @@ function courseCheck() { // checks to see if a player has won
 		if (gradeRandomizer < 4) { // randomizer lower than 4 is a passing score
 			title.innerHTML = "PLAYER ONE WINS!";
 			subtitle.innerHTML = "GAME OVER";
+			card.innerHTML = "<br>CONGRATULATIONS PLAYER ONE!<br>YOU WON!<br><img src='spongebob-celebrate.png' class='winner'>";
 		}
 	}
 
@@ -256,6 +254,19 @@ function courseCheck() { // checks to see if a player has won
 		if (gradeRandomizer < 4) {
 			title.innerHTML = "PLAYER TWO WINS!";
 			subtitle.innerHTML = "GAME OVER";
+			card.innerHTML = "<br>CONGRATULATIONS PLAYER TWO!<br>YOU WON!<br><img src='patrick-celebrate.png' class='winner'>";
 		}
 	}
+}
+
+spongebob.addEventListener('click', scoreDisplay);
+
+function scoreDisplay(e) { // displays score for spongebob
+	playeroneClasses.style.display = "block";
+}
+
+patrick.addEventListener('click', p2ScoreDisplay);
+
+function p2ScoreDisplay(e) { // displays score for patrick
+	playertwoClasses.style.display = "block";
 }

@@ -238,3 +238,14 @@ body {
     overflow-wrap: break-word;
 }
 
+.winner {
+    max-width: 20vw;
+}
+
+#playerOneClasses {
+    display: none;
+}
+
+#playerTwoClasses {
+    display: none;
+}
