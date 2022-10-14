@@ -13,16 +13,16 @@ var diceArray = [ // array with dice images
 
 
 var lifeCardArray = [
-	"Superiority complex got the best of you and cost you a class. Lose 1 course.",
-	"You forgot how to center a div on your final exam. Lose 1 course.",
-	"You found Stack Overflow and your grades suddenly improved. Gain 1 course.",
-	"You were proactive with your coursework. Gain 1 course.",
-	"Your cat spilled water on your PC and it caught on fire. Luckily, you backed-up your files. Nothing happens.",
-	"Your cat spilled water on your PC and it caught on fire. You didn't have your files backed-up though. Lose 1 course.",
-	"You fixed 100 bugs in your program, but another 32 popped up. You lose a bit of dignity, but nothing else.",
-	"You set up your for-loop incorrectly and your computer blows up. Lose 1 course.",
-	"Professor Markley wins the lottery and goes to Hawaii indefinitely. Gain 1 course. ",
-	"Recursion example..." // loops a player back to the start
+	"You landed on chance! Looks like you needed a break from all the classes.",
+	"You landed on chance! What are you doing? Your opponent will win if you continue to land on these.",
+	"You landed on chance! Did you happen to land here by chance?",
+	"You landed on chance! You're almost there... or not...",
+	"You landed on chance! Try landing on a course next time.",
+	"You landed on chance! So close, yet so far.",
+	"You landed on chance! Luckily, these don't penalize you...",
+	"You landed on chance! Better luck next time.",
+	"You landed on chance! Come here often?",
+	"You landed on chance! Your opponent doesn't stand a chance, evidently, you're quiet literally standing on one..."
 ];
 
 var classArray = [ // array with class names, excules CIS260
@@ -65,7 +65,7 @@ var singleAlert = document.getElementById('singleAlert');
 var p1Total = 0;
 var p2Total = 0;
 var clearTable = 0;
-
+var chanceText = document.getElementById('chanceText');
 
 rollButton.addEventListener('click', diceRoll);
 
@@ -99,7 +99,12 @@ function diceRoll(e) { // select random dice from array
 					p2Total = 0; // resets the character to start position
 					p2Total += p2Remainder; // allows for the remaining moves to play out
 				}
-				
+
+				if (classArray[p2Total] == classArray[4] || classArray[p2Total] == classArray[7] || classArray[p2Total] == classArray[12]) {
+					chanceSelector();
+				}
+				console.log(p2Total);
+
 				document.getElementById(p2Total).innerHTML += '<img src="patrick.png" alt="" class="small">'; // changes player 2's location
 				break;
 			case 1: // first player's turn
@@ -111,11 +116,18 @@ function diceRoll(e) { // select random dice from array
 					p1Total = 0; // resets the character to start position
 					p1Total += p1Remainder; // allows for the remaining moves to play out
 				}
+
+				if (classArray[p1Total] == classArray[4] || classArray[p1Total] == classArray[7] || classArray[p1Total] == classArray[12]) {
+					chanceSelector();
+				}
+
+				console.log(p1Total);
+
 				if (clearTable >= 2) { // clears the table but keeps track of player 2's last location
 					for (i = 0; i < classArray.length; i++) { // loads array into HTML
 						document.getElementById(i).innerHTML = classArray[i];
 					}
-					document.getElementById(p2Total).innerHTML += '<img src="patrick.png" alt="" class="small">';
+					document.getElementById(p2Total).innerHTML += '<img src="patrick.png" alt="" class="small">'; // keeps p2's location
 				}
 				document.getElementById(p1Total).innerHTML += '<img src="spongebob.png" alt="" class="small">'; // changes player 1's location
 				break;
@@ -127,7 +139,6 @@ function diceRoll(e) { // select random dice from array
 	}
 }
 
-
 var grade = document.getElementById('grade');
 var gradeRandomizer = 0;
 
@@ -138,12 +149,15 @@ function grader(e) { // function gives grade and allows for the next player to b
 		switch (gradeRandomizer) {
 			case 1:
 				grade.innerHTML += "A";
+				addCourse();
 				break;
 			case 2:
 				grade.innerHTML += "B";
+				addCourse();
 				break;
 			case 3:
 				grade.innerHTML += "C";
+				addCourse();
 				break;
 			case 4:
 				grade.innerHTML += "D";
@@ -157,9 +171,35 @@ function grader(e) { // function gives grade and allows for the next player to b
 		gradeAlert.style.display = "none";
 		singleGrade = true;
 		gradeRandomizer = 0;
+		chanceText.innerHTML = "";
 	} else {
 		singleAlert.style.display = "block";
 		rollButton.style.backgroundColor = "#24d940";
+	}
+}
+
+
+var playeroneClasses = document.getElementById('playerOneClasses');
+var playertwoClasses = document.getElementById('playerTwoClasses');
+
+function addCourse() {
+	switch (turnCounter % 2) {
+		case 0: // player 2
+			if (classArray[p2Total] == classArray[4] || classArray[p2Total] == classArray[7] || classArray[p2Total] == classArray[12] || classArray[p2Total] == classArray[15] || classArray[p2Total] == classArray[0]) {
+				// do nothing
+			} else {
+				playertwoClasses.innerHTML += classArray[p2Total] + " ";
+			}
+			courseCheck();
+			break;
+		case 1: // player 1
+			if (classArray[p1Total] == classArray[4] || classArray[p1Total] == classArray[7] || classArray[p1Total] == classArray[12] || classArray[p1Total] == classArray[15] || classArray[p1Total] == classArray[0]) {
+				// do nothing
+			} else {
+				playeroneClasses.innerHTML += classArray[p1Total] + " ";
+			}
+			courseCheck();
+			break;
 	}
 }
 
@@ -191,42 +231,31 @@ function popupShow(e) { // displays the rules again
 	diceContainer.style.display = "none";
 }
 
-
-
-
-
-
-
-/* THIS CODE WORKS FOR A RANDOM CHANCE CARD
-
-function chanceSelector(){
+function chanceSelector() { // gives random chance card
 	var chance = Math.floor(Math.random() * 10);
-	console.log(chance);
-	switch(chance){ // chance card switch
-		case 0:
-		case 1:
-		case 5: 
-		case 7: // loses a course
-			console.log(lifeCardArray[chance]);
-			console.log(chance);
-			break;
-		case 2:
-		case 3:
-		case 8: // gains a course
-			console.log(lifeCardArray[chance]);
-			console.log(chance);
-			break;
-		case 4:
-		case 6: // nothing happens
-			console.log(lifeCardArray[chance]);
-			console.log(chance);
-			break;
-		case 9: // send to beginning
-			console.log('to the beginnging');
-			console.log(chance);
-			break;
+	console.log(lifeCardArray[chance]);
+	chanceText.innerHTML = lifeCardArray[chance];
+}
+
+var p1Capstone = document.getElementById('p1Capstone');
+var p2Capstone = document.getElementById('p2Capstone');
+var title = document.getElementById('title');
+var subtitle = document.getElementById('subtitle');
+
+function courseCheck() { // checks to see if a player has won
+	if (playeroneClasses.innerHTML.length == 32) { // 32 is the exact length of a player with 3 passing classes
+		p1Capstone.innerHTML += '<img src="spongebob.png" alt="" class="small">';
+		if (gradeRandomizer < 4) { // randomizer lower than 4 is a passing score
+			title.innerHTML = "PLAYER ONE WINS!";
+			subtitle.innerHTML = "GAME OVER";
+		}
 	}
-}	
 
-
-*/
+	if (playertwoClasses.innerHTML.length == 32) {
+		p2Capstone.innerHTML += '<img src="patrick.png" alt="" class="small">';
+		if (gradeRandomizer < 4) {
+			title.innerHTML = "PLAYER TWO WINS!";
+			subtitle.innerHTML = "GAME OVER";
+		}
+	}
+}
