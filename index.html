@@ -1,104 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Chris de Leon -->
-    <!-- 10/7/2022 -->
-    <!-- CIS131 - Midterm Project -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
-    <title>Board Game</title>
-</head>
-<body id="body">
-    <h1 class="title">The Game of Life</h1>
-    <h3 class="subtitle">OTC Edition</h3>
-
-    <div class="square" id="square">
-        <div id="topRow">
+   <head>
+      <!-- Chris de Leon -->
+      <!-- 10/7/2022 -->
+      <!-- CIS131 - Midterm Project -->
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
+      <title>Board Game</title>
+   </head>
+   <body id="body">
+      <h1 class="title" id="title">The Game of Life</h1>
+      <h3 class="subtitle" id="subtitle">OTC Edition</h3>
+      <div class="square" id="square">
+         <div id="topRow">
             <div id="0"></div>
             <div id="1"></div>
             <div id="2"></div>
             <div id="3"></div>
             <div id="4"></div>
-
-        </div>
-
-        <div id="columnContainer">
+         </div>
+         <div id="columnContainer">
             <div id="leftColumn">
-                <div id="15"></div>
-                <div id="14"></div>
-                <div id="13"></div>
-
+               <div id="15"></div>
+               <div id="14"></div>
+               <div id="13"></div>
             </div>
-
             <div id="rightColumn">
-                <div id="5"></div>
-                <div id="6"></div>
-                <div id="7"></div>
-                
+               <div id="5"></div>
+               <div id="6"></div>
+               <div id="7"></div>
             </div>
-        </div>
-
-        <div id="bottomRow">
+         </div>
+         <div id="bottomRow">
             <div id="12"></div>
             <div id="11"></div>
             <div id="10"></div>
             <div id="9"></div>
             <div id="8"></div>
-            
-        </div>
-    </div>
-    <div class="characterContainer">
-        <div id="spongebobCharacter">
-            
-        </div>
-
-        <div id="patrickCharacter"></div>
-    </div>
-    
-    
-    
-    <div id="diceContainer">
-        <img src="1.png" alt="die 1" id="firstDie" class="dice">
-        <img src="1.png" alt="die 2" id="secondDie" class="dice"><br>
-        <button class="button" id="button">Roll dice!</button>
-        <button id="gradeButton" class="grade button">Grade/Card</button><span id="gradeAlert">*you forgot to get your grade/card*</span><span id="singleAlert">*invalid input, it's time to roll the dice*</span>
-        <br>
-        <button class="button" id="rules">Rules</button>
-    </div>
-
-
-    <div class="turns" id="playerContainer">
-        <div id="playerOne">
-            Player 1's turn<br>
-            <img src="#" class="character" alt="" id="spongebob"><br><span id="playerOneClasses"></span>
-        </div>
-        <div id="playerTwo">
-            Player 2's turn<br>
-            <img src="#" class="character" alt="" id="patrick"><br><span id="playerTwoClasses"></span>
-        </div>
-    </div>
-
-    <div id="capstone"><h1>CIS-260</h1><h1>CIS-260</h1></div>
-
-
-    <div id="popup">
-        <h1>Rules:</h1>
-        <p>Thanks for playing The Game of Life: OTC Edition. <br>Two players will compete against each other with the goal of passing CIS260 and ultimately graduating. <br>To play, the player will role the dice by clicking on the "Roll Dice!" button at the bottom of the page. The game will begin with player 1. Your character will move the sum of the two die. At random, you will be assigned a grade on the course that you land on. The passed classes will appear under the player. If the grade is a C or above, it'll be added to the classes you've passed. Once you have at least 3 classes with a C or higher, you'll roll the dice once again. A sum of 8 or higher will earn you a passing score for CIS260 and you'll graduate.</p>
-        <button class="button" id="play">Let's Play!</button>
-    </div>
-
-    <div id="card">
-        <h4 id="grade">Grade: </h4>
-        <h4 id="chance">Chance: </h4>
-    </div>
-
-    
-    
-    
-
-    <script src="script.js"></script>
-</body>
+         </div>
+      </div>
+      <div class="characterContainer">
+         <div id="spongebobCharacter">
+         </div>
+         <div id="patrickCharacter"></div>
+      </div>
+      <div id="diceContainer">
+         <img src="1.png" alt="die 1" id="firstDie" class="dice">
+         <img src="1.png" alt="die 2" id="secondDie" class="dice"><br>
+         <button class="button" id="button">Roll dice!</button>
+         <button id="gradeButton" class="grade button">Grade</button><span id="gradeAlert">*that roll won't count. you forgot to get your grade/card*</span><span id="singleAlert">*invalid input, it's time to roll the dice*</span>
+         <br>
+         <button class="button" id="rules">How to Play</button>
+      </div>
+      <div class="turns" id="playerContainer">
+         <div id="playerOne">
+            Player 2 just rolled.<br>
+            <img src="#" class="character" alt="" id="spongebob"><br><span id="playerOneClasses">Passed: </span>
+         </div>
+         <div id="playerTwo">
+            Player 1 just rolled.<br>
+            <img src="#" class="character" alt="" id="patrick"><br><span id="playerTwoClasses">Passed: </span>
+         </div>
+      </div>
+      <div id="capstone">
+         <h1 id="p1Capstone">CIS-260</h1>
+         <h1 id="p2Capstone">CIS-260</h1>
+      </div>
+      <div id="popup">
+         <h1>How to Play:</h1>
+         <p><br>The goal of the game is to pass 3 classes and then pass the capstone course, CIS-260.<br>As soon as you click play, player 1 will roll the dice and then obtain his/her score.<br> Remember: your turn is not over until you have clicked the Grade button, even if you land on a chance!</p>
+         <button class="button" id="play">Let's Play!</button>
+      </div>
+      <div id="card">
+         <h4 id="grade">Grade: </h4>
+         <h4 id="chance">Chance: </h4>
+         <p id="chanceText"></p>
+      </div>
+      <script src="script.js"></script>
+   </body>
 </html>
